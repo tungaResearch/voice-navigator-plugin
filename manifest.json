@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "Voice Navigator",
+  "version": "1.0",
+  "description": "Control any webpage with voice",
+  "permissions": ["activeTab", "scripting"],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ]
+}
