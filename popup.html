@@ -1,9 +1,205 @@
 <!DOCTYPE html>
 <html>
-  <head><title>Voice Nav</title></head>
-  <body>
-    <button id="startBtn">🎤 Start Listening</button>
-    <p id="status"></p>
-    <script src="popup.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <title>Enhanced Voice Navigator</title>
+  <style>
+    body {
+      width: 280px;
+      padding: 16px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      margin: 0;
+      font-size: 13px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .header p {
+      margin: 4px 0 0 0;
+      font-size: 11px;
+      opacity: 0.8;
+    }
+
+    .controls {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .btn {
+      padding: 10px 14px;
+      border: none;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .btn-primary {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-primary:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-1px);
+    }
+
+    .btn-primary:active {
+      transform: translateY(0);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      font-size: 11px;
+      padding: 7px 10px;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn-row .btn-secondary {
+      flex: 1;
+    }
+
+    .status {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      line-height: 1.4;
+      min-height: 16px;
+      backdrop-filter: blur(10px);
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .commands {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 12px;
+      border-radius: 6px;
+      backdrop-filter: blur(10px);
+    }
+
+    .commands h3 {
+      margin: 0 0 8px 0;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .commands ul {
+      margin: 0;
+      padding-left: 12px;
+      font-size: 10px;
+      line-height: 1.4;
+    }
+
+    .commands li {
+      margin-bottom: 2px;
+      opacity: 0.9;
+    }
+
+    .listening {
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 1; }
+      50% { opacity: 0.7; }
+      100% { opacity: 1; }
+    }
+
+    .icon {
+      font-size: 14px;
+    }
+
+    .tip {
+      margin-top: 8px; 
+      padding-top: 8px; 
+      border-top: 1px solid rgba(255,255,255,0.2); 
+      font-size: 9px; 
+      opacity: 0.8;
+      line-height: 1.3;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1><span>🎤</span> Voice Navigator</h1>
+    <p>Compact voice control with floating popup</p>
+  </div>
+
+  <div class="controls">
+    <button id="startBtn" class="btn btn-primary">
+      <span class="icon">🎤</span>
+      <span id="btnText">Start Listening</span>
+    </button>
+    
+    <div class="btn-row">
+      <button id="helpBtn" class="btn btn-secondary">
+        <span class="icon">❓</span>
+        <span>Help</span>
+      </button>
+      <button id="floatingBtn" class="btn btn-secondary">
+        <span class="icon">🎯</span>
+        <span id="floatingBtnText">Floating</span>
+      </button>
+    </div>
+  </div>
+
+  <div id="status" class="status">
+    Click "Start Listening" to begin voice control
+  </div>
+
+  <div id="commands" class="commands" style="display: none;">
+    <h3>Quick Commands:</h3>
+    <ul>
+      <li><strong>Voice:</strong> "start/stop listening"</li>
+      <li><strong>Navigate:</strong> "scroll up/down", "scroll to top/bottom"</li>
+      <li><strong>Click:</strong> "click [button/link text]"</li>
+      <li><strong>Type:</strong> "type [text] into [field name]"</li>
+      <li><strong>Select:</strong> "select [option] from [dropdown]"</li>
+      <li><strong>Links:</strong> "go to [link text]", "open [URL]"</li>
+      <li><strong>Forms:</strong> "submit form", "clear field [name]"</li>
+    </ul>
+    <div class="tip">
+      <strong>💡 Continuous Mode:</strong> After your first command, voice recognition continues automatically. Say "stop listening" to stop.
+    </div>
+    <div class="tip">
+      <strong>🎯 Floating Popup:</strong> Enable floating popup to keep voice controls visible across all tabs. The popup can be dragged and minimized!
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
 </html>
+

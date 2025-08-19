@@ -1,16 +1,23 @@
 {
   "manifest_version": 3,
-  "name": "Voice Navigator",
-  "version": "1.0",
-  "description": "Control any webpage with voice",
-  "permissions": ["activeTab", "scripting"],
+  "name": "Enhanced Voice Navigator",
+  "version": "2.0",
+  "description": "Advanced voice control for any webpage - navigate, fill forms, select dropdowns, and more",
+  "permissions": ["activeTab", "scripting", "storage"],
   "action": {
-    "default_popup": "popup.html"
+    "default_popup": "popup.html",
+    "default_title": "Enhanced Voice Navigator"
   },
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
       "js": ["content.js"]
     }
-  ]
+  ],
+  "icons": {
+    "16": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTggMkM2LjM0IDIgNSAzLjM0IDUgNVY4QzUgOS42NiA2LjM0IDExIDggMTFDOS42NiAxMSAxMSA5LjY2IDExIDhWNUMxMSAzLjM0IDkuNjYgMiA4IDJaIiBmaWxsPSIjNDI4NUY0Ii8+CjxwYXRoIGQ9Ik0xMyA4QzEzIDEwLjc2IDEwLjc2IDEzIDggMTNDNS4yNCAxMyAzIDEwLjc2IDMgOCIgc3Ryb2tlPSIjNDI4NUY0IiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8cGF0aCBkPSJNOCAxM1YxNiIgc3Ryb2tlPSIjNDI4NUY0IiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8cGF0aCBkPSJNNiAxNkgxMCIgc3Ryb2tlPSIjNDI4NUY0IiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K",
+    "48": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTI0IDZDMTkuMDIgNiAxNSAxMC4wMiAxNSAxNVYyNEMxNSAyOC45OCAxOS4wMiAzMyAyNCAzM0MyOC45OCAzMyAzMyAyOC45OCAzMyAyNFYxNUMzMyAxMC4wMiAyOC45OCA2IDI0IDZaIiBmaWxsPSIjNDI4NUY0Ii8+CjxwYXRoIGQ9Ik0zOSAyNEMzOSAzMi4yOCAzMi4yOCAzOSAyNCAzOUMxNS43MiAzOSA5IDMyLjI4IDkgMjQiIHN0cm9rZT0iIzQyODVGNCIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTI0IDM5VjQ4IiBzdHJva2U9IiM0Mjg1RjQiIHN0cm9rZS13aWR0aD0iNiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxwYXRoIGQ9Ik0xOCA0OEgzMCIgc3Ryb2tlPSIjNDI4NUY0IiBzdHJva2Utd2lkdGg9IjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K",
+    "128": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgdmlld0JveD0iMCAwIDEyOCAxMjgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik02NCAxNkM1MC43NCAxNiA0MCAyNi43NCA0MCA0MFY2NEM0MCA3Ny4yNiA1MC43NCA4OCA2NCA4OEM3Ny4yNiA4OCA4OCA3Ny4yNiA4OCA2NFY0MEM4OCAyNi43NCA3Ny4yNiAxNiA2NCAxNloiIGZpbGw9IiM0Mjg1RjQiLz4KPHBhdGggZD0iTTEwNCA2NEM1MCA4Ni4wOSA4Ni4wOSAxMDQgNjQgMTA0QzQxLjkxIDEwNCAyNCA4Ni4wOSAyNCA2NCIgc3Ryb2tlPSIjNDI4NUY0IiBzdHJva2Utd2lkdGg9IjE2IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTY0IDEwNFYxMjgiIHN0cm9rZT0iIzQyODVGNCIgc3Ryb2tlLXdpZHRoPSIxNiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxwYXRoIGQ9Ik00OCAxMjhIODAiIHN0cm9rZT0iIzQyODVGNCIgc3Ryb2tlLXdpZHRoPSIxNiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+Cjwvc3ZnPgo="
+  }
 }
+
